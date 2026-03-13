@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: medicore-db
+    environment:
+      POSTGRES_DB: medicore
+      POSTGRES_USER: medicore_user
+      POSTGRES_PASSWORD: medicore_pass
+    ports:
+      - "5434:5432"
+    volumes:
+      - medicore_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medicore_user -d medicore"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  medicore_data:
