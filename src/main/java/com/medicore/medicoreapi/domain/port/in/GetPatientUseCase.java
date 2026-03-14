@@ -2,6 +2,8 @@ package com.medicore.medicoreapi.domain.port.in;
 
 import com.medicore.medicoreapi.domain.model.Patient;
 
-public interface CreatePatientUseCase {
-    Patient create(Patient patient);
+import java.util.UUID;
+
+public interface GetPatientUseCase {
+    Patient findById(UUID id);
 }
